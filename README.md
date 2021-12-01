@@ -1,3 +1,7 @@
+# FORK from main:
+
+This fork was made in order to use the polygon-testnetwork mumbai instead of the mainnet. The chain-id need to be changed in the configuration.
+
 # Polygon Node DAppNode package
 
 You can use this package without installing it in your DAppNode following these instructions:
