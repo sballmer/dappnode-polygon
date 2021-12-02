@@ -1,6 +1,9 @@
 # FORK from main:
 
-This fork was made in order to use the polygon-testnetwork mumbai instead of the mainnet. The chain-id need to be changed in the configuration.
+This fork was made in order to use the polygon-testnetwork mumbai instead of the mainnet. The chain-id need to be changed in the configuration, the seeds and the enode.
+
+You may setup the node you wish (archive of full) by seting up the snapshot desired. Please find the urls here https://snapshots.matic.today/
+
 
 # Polygon Node DAppNode package
 
