@@ -1,6 +1,6 @@
 {
   "name": "polygon-mumbai.public.dappnode.eth",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Polygon is a protocol and a framework for building and connecting Ethereum-compatible blockchain networks. Aggregating scalable solutions on Ethereum supporting a multi-chain Ethereum ecosystem. This version is about the polygon test network mumbai.",
   "type": "service",
   "chain": "ethereum",

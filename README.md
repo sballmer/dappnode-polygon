@@ -4,6 +4,14 @@ This fork was made in order to use the polygon-testnetwork mumbai instead of the
 
 You may setup the node you wish (archive of full) by seting up the snapshot desired. Please find the urls here https://snapshots.matic.today/
 
+## build dappnode package
+
+`dappnodesdk build`
+
+## publish package
+
+`dappnodesdk publish`
+
 
 # Polygon Node DAppNode package
 

@@ -9,7 +9,7 @@ services:
   heimdalld:
     build: &ref_0
       args:
-        UPSTREAM_VERSION: v0.2.3
+        UPSTREAM_VERSION: v0.2.4
       context: ./build/heimdall
       dockerfile: Dockerfile
     volumes:
@@ -26,7 +26,7 @@ services:
       - BOOTSTRAP=1
       - "ETH1_RPC_URL=http://fullnode.dappnode:8545"
     restart: unless-stopped
-    image: "heimdalld.polygon-mumbai.public.dappnode.eth:0.1.1"
+    image: "heimdalld.polygon-mumbai.public.dappnode.eth:0.1.2"
   heimdallr:
     environment:
       - REST_SERVER=1
@@ -39,16 +39,16 @@ services:
     depends_on:
       - heimdalld
     restart: unless-stopped
-    image: "heimdallr.polygon-mumbai.public.dappnode.eth:0.1.1"
+    image: "heimdallr.polygon-mumbai.public.dappnode.eth:0.1.2"
   bor:
     build:
       args:
-        UPSTREAM_VERSION: v0.2.10
+        UPSTREAM_VERSION: v0.2.12-beta3
       context: ./build/bor
       dockerfile: Dockerfile
     environment:
       - >-
-        SNAPSHOT_URL=https://matic-blockchain-snapshots.s3-accelerate.amazonaws.com/matic-mumbai/bor-fullnode-node-snapshot-2021-11-03.tar.gz
+        SNAPSHOT_URL=https://matic-blockchain-snapshots.s3-accelerate.amazonaws.com/matic-mumbai/bor-fullnode-node-snapshot-2021-12-04.tar.gz
       - BOOTSTRAP=1
     volumes:
       - "bor:/datadir"
@@ -60,7 +60,7 @@ services:
     depends_on:
       - heimdallr
     restart: unless-stopped
-    image: "bor.polygon-mumbai.public.dappnode.eth:0.1.1"
+    image: "bor.polygon-mumbai.public.dappnode.eth:0.1.2"
 volumes:
   heimdall: {}
   bor: {}
