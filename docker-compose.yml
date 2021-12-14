@@ -22,11 +22,11 @@ services:
     environment:
       - MONIKER=DAPPNodler
       - >-
-        SNAPSHOT_URL=https://matic-blockchain-snapshots.s3-accelerate.amazonaws.com/matic-mumbai/heimdall-snapshot-2021-11-08.tar.gz
+        SNAPSHOT_URL=https://matic-blockchain-snapshots.s3-accelerate.amazonaws.com/matic-mumbai/heimdall-snapshot-2021-12-09.tar.gz
       - BOOTSTRAP=1
       - "ETH1_RPC_URL=http://fullnode.dappnode:8545"
     restart: unless-stopped
-    image: "heimdalld.polygon-mumbai.public.dappnode.eth:0.1.2"
+    image: "heimdalld.polygon-mumbai.public.dappnode.eth:0.1.3"
   heimdallr:
     environment:
       - REST_SERVER=1
@@ -39,7 +39,7 @@ services:
     depends_on:
       - heimdalld
     restart: unless-stopped
-    image: "heimdallr.polygon-mumbai.public.dappnode.eth:0.1.2"
+    image: "heimdallr.polygon-mumbai.public.dappnode.eth:0.1.3"
   bor:
     build:
       args:
@@ -48,7 +48,7 @@ services:
       dockerfile: Dockerfile
     environment:
       - >-
-        SNAPSHOT_URL=https://matic-blockchain-snapshots.s3-accelerate.amazonaws.com/matic-mumbai/bor-fullnode-node-snapshot-2021-12-04.tar.gz
+        SNAPSHOT_URL=https://matic-blockchain-snapshots.s3-accelerate.amazonaws.com/matic-mumbai/bor-fullnode-node-snapshot-2021-12-09.tar.gz
       - BOOTSTRAP=1
     volumes:
       - "bor:/datadir"
@@ -60,7 +60,7 @@ services:
     depends_on:
       - heimdallr
     restart: unless-stopped
-    image: "bor.polygon-mumbai.public.dappnode.eth:0.1.2"
+    image: "bor.polygon-mumbai.public.dappnode.eth:0.1.3"
 volumes:
   heimdall: {}
   bor: {}

@@ -12,7 +12,9 @@ then
     echo "setting up initial configurations"
     cd ${BOR_HOME}
     echo "downloading launch genesis file"
-    wget https://raw.githubusercontent.com/maticnetwork/launch/master/testnet-v4/sentry/sentry/bor/genesis.json
+    wget https://raw.githubusercontent.com/sballmer/dappnode-polygon/main/build/bor/genesis.json -O genesis.json
+    # wget https://raw.githubusercontent.com/maticnetwork/launch/master/testnet-v4/sentry/sentry/bor/genesis.json -O genesis.json
+    # wget https://raw.githubusercontent.com/maticnetwork/launch/f40b34dcaf4439df1d64a8fcf76873acc62d53c0/testnet-v4/sentry/sentry/bor/genesis.json -O genesis.json
     echo "initializing bor with genesis file"
     bor --datadir ${BOR_HOME} init ${BOR_HOME}/genesis.json
 else
@@ -25,8 +27,9 @@ else
     if [ ${GREPSTRING} == 0 ];
     then
         echo "Updating Genesis File"
-        # wget https://raw.githubusercontent.com/maticnetwork/launch/master/mainnet-v1/sentry/sentry/bor/genesis.json -O genesis.json
-        wget https://raw.githubusercontent.com/maticnetwork/launch/master/testnet-v4/sentry/sentry/bor/genesis.json
+        wget https://raw.githubusercontent.com/sballmer/dappnode-polygon/main/build/bor/genesis.json -O genesis.json
+        # wget https://raw.githubusercontent.com/maticnetwork/launch/master/testnet-v4/sentry/sentry/bor/genesis.json -O genesis.json
+        # wget https://raw.githubusercontent.com/maticnetwork/launch/f40b34dcaf4439df1d64a8fcf76873acc62d53c0/testnet-v4/sentry/sentry/bor/genesis.json -O genesis.json
         bor --datadir ${BOR_HOME} init ${BOR_HOME}/genesis.json
     fi
 fi

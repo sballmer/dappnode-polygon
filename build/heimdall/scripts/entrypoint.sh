@@ -16,8 +16,7 @@ then
     rm genesis.json
 
     echo "downloading launch genesis file"
-    # wget https://raw.githubusercontent.com/maticnetwork/launch/master/mainnet-v1/without-sentry/heimdall/config/genesis.json
-    wget https://raw.githubusercontent.com/maticnetwork/launch/master/testnet-v4/without-sentry/heimdall/config/genesis.json
+    wget https://raw.githubusercontent.com/maticnetwork/launch/master/testnet-v4/without-sentry/heimdall/config/genesis.json -O genesis.json
 
     echo "overwriting toml config lines"
     # config.toml
