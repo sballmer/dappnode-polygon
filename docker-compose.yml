@@ -46,6 +46,7 @@ services:
         UPSTREAM_VERSION: v0.2.12-candidate
       context: ./build/bor
       dockerfile: Dockerfile
+    hostname: bor
     environment:
       - >-
         SNAPSHOT_URL=https://matic-blockchain-snapshots.s3-accelerate.amazonaws.com/matic-mumbai/bor-fullnode-node-snapshot-2021-12-15.tar.gz
@@ -61,6 +62,24 @@ services:
       - heimdallr
     restart: unless-stopped
     image: "bor.polygon-mumbai.public.dappnode.eth:0.1.3"
+  nginx:
+    build:
+      context: ./build/nginx
+      dockerfile: Dockerfile
+    environment:
+     - INT_HTTP=8545
+     - EXT_HTTP=10645
+     - INT_WS=8546
+     - EXT_WS=10646
+     - AUTH_USER=admin
+     - AUTH_PASSWORD=12345
+     - WS_NAME=bor
+    ports:
+      - "${EXT_HTTP:-10645}:${EXT_HTTP:-10645}"
+      - "${EXT_WS:-10646}:${EXT_WS:-10646}"
+    depends_on:
+      - bor
+    restart: unless-stopped
 volumes:
   heimdall: {}
   bor: {}

@@ -1,0 +1,33 @@
+version: "3.4"
+services:
+  nginx:
+    build:
+      context: ./build/nginx
+      dockerfile: Dockerfile
+    environment:
+     - INT_HTTP=8080
+     - EXT_HTTP=10645
+     - INT_WS=8010
+     - EXT_WS=10646
+     - AUTH_USER=admin
+     - AUTH_PASSWORD=12345
+     - WS_NAME=dummyws
+    ports:
+      - "10645:10645"
+      - "10646:10646"
+    depends_on:
+      - dummy
+      - dummyws
+    restart: unless-stopped
+  # HTTP dummy server
+  dummy:
+    image: jasonrm/dummy-server
+    hostname: bor
+    ports:
+      - "10545:8080"
+  # Websocket dummy server
+  dummyws:
+    image: ksdn117/web-socket-test
+    hostname: dummyws
+    ports:
+      - "10546:8010"

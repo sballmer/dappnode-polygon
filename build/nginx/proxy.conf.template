@@ -1,0 +1,45 @@
+# Restric for basic auth
+auth_basic                "Restricted Area";
+auth_basic_user_file      /etc/nginx/.htpasswd;
+
+# HTTP proxy
+server {
+  listen                  $EXT_HTTP;
+  server_name             http_stream;
+
+  access_log              /var/log/nginx/http.log;
+  error_log               /var/log/nginx/http.error_log  warn;
+
+  location / {
+    proxy_pass            http://bor:$INT_HTTP;
+    include               /etc/nginx/includes/common.conf;
+  }
+}
+
+# WS proxy
+
+## To handle close properly
+map $http_upgrade $connection_upgrade {
+  default                 upgrade;
+  ''                      close;
+}
+
+## Upstream handle for websocket
+upstream websocket {
+  server                  ${WS_NAME}:$INT_WS;
+}
+
+server {
+  listen $EXT_WS;
+
+  access_log              /var/log/nginx/ws.log;
+  error_log               /var/log/nginx/ws.error_log warn;
+
+  location / {
+    proxy_pass            http://websocket;
+    proxy_http_version    1.1;
+    proxy_set_header      Upgrade $http_upgrade;
+    proxy_set_header      Connection $connection_upgrade;
+    proxy_set_header      Host $host;
+  }
+}
