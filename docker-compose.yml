@@ -49,7 +49,7 @@ services:
     hostname: bor
     environment:
       - >-
-        SNAPSHOT_URL=https://matic-blockchain-snapshots.s3-accelerate.amazonaws.com/matic-mumbai/bor-fullnode-node-snapshot-2021-12-15.tar.gz
+        SNAPSHOT_URL=https://matic-blockchain-snapshots.s3-accelerate.amazonaws.com/matic-mumbai/bor-fullnode-snapshot-2021-12-20.tar.gz
       - BOOTSTRAP=1
     volumes:
       - "bor:/datadir"
