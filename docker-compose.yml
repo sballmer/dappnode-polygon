@@ -26,7 +26,7 @@ services:
       - BOOTSTRAP=1
       - "ETH1_RPC_URL=http://fullnode.dappnode:8545"
     restart: unless-stopped
-    image: "heimdalld.polygon-mumbai.public.dappnode.eth:0.1.3"
+    image: "heimdalld.polygon-mumbai.public.dappnode.eth:0.1.4"
   heimdallr:
     environment:
       - REST_SERVER=1
@@ -39,7 +39,7 @@ services:
     depends_on:
       - heimdalld
     restart: unless-stopped
-    image: "heimdallr.polygon-mumbai.public.dappnode.eth:0.1.3"
+    image: "heimdallr.polygon-mumbai.public.dappnode.eth:0.1.4"
   bor:
     build:
       args:
@@ -61,25 +61,26 @@ services:
     depends_on:
       - heimdallr
     restart: unless-stopped
-    image: "bor.polygon-mumbai.public.dappnode.eth:0.1.3"
+    image: "bor.polygon-mumbai.public.dappnode.eth:0.1.4"
   nginx:
     build:
       context: ./build/nginx
       dockerfile: Dockerfile
     environment:
-     - INT_HTTP=8545
-     - EXT_HTTP=10645
-     - INT_WS=8546
-     - EXT_WS=10646
-     - AUTH_USER=admin
-     - AUTH_PASSWORD=12345
-     - WS_NAME=bor
+      - INT_HTTP=8545
+      - EXT_HTTP=10645
+      - INT_WS=8546
+      - EXT_WS=10646
+      - AUTH_USER=admin
+      - AUTH_PASSWORD=12345
+      - WS_NAME=bor
     ports:
       - "${EXT_HTTP:-10645}:${EXT_HTTP:-10645}"
       - "${EXT_WS:-10646}:${EXT_WS:-10646}"
     depends_on:
       - bor
     restart: unless-stopped
+    image: "nginx.polygon-mumbai.public.dappnode.eth:0.1.4"
 volumes:
   heimdall: {}
   bor: {}
