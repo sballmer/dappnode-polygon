@@ -7,6 +7,11 @@ You may setup the node you wish (archive of full) by seting up the snapshot desi
 bor repo: https://github.com/maticnetwork/bor  
 launch repo: https://github.com/maticnetwork/launch  
 
+## basic auth
+
+To secure the access of your node, an nginx docker was added so that you can specify in the env var a user and password. Mixed with the HTTPS dappnode package you can have this kind of url:
+`https://user:password@mumbai-service.xxxxxxxxxxx.dyndns.dappnode.io`  
+
 ## rebuild dockers
 
 `docker-compose build --no-cache`

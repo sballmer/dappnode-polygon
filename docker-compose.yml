@@ -75,8 +75,8 @@ services:
       - AUTH_PASSWORD=12345
       - WS_NAME=bor
     ports:
-      - "${EXT_HTTP:-10645}:${EXT_HTTP:-10645}"
-      - "${EXT_WS:-10646}:${EXT_WS:-10646}"
+      - "10645:10645"
+      - "10646:10646"
     depends_on:
       - bor
     restart: unless-stopped
